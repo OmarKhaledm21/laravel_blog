@@ -13,7 +13,7 @@ Route::get('/posts', function () {
         'posts' => Post::latest('published_at')->get(),
         'categories' => Category::all()
     ]);
-});
+})->name('home');
 
 Route::get('posts/{post}', function (Post $post) {
     return view('post', [
