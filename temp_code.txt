@@ -1,0 +1,15 @@
+
+    // if (!file_exists($$path = __DIR__ . "/../resources/posts/{$slug}.html")) {
+    //     // ddd('file doesnot exist');
+    //     // abort(404,'File not found');
+    //     return redirect('/');
+    // }
+
+    // $post  = cache()->remember("posts.{$slug}", now()->addSeconds(5), function () use ($path) {
+    //     var_dump('file get contents');
+    //     return  file_get_contents($path);
+    // });
+
+    // return view('post', [
+    //     'post' => $post
+    // ]);
