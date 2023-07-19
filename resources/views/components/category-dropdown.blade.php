@@ -4,11 +4,13 @@
             {{ isset($currentCategory) ? ucwords($currentCategory->name) : 'Categories' }}
         </button>
     </x-slot>
-    <x-dropdown-item href="/" :active="request()->routeIs('home')">All</x-dropdown-item>
+    <x-dropdown-item
+        href="/?{{ http_build_query(request()->except('category','page')) }} "
+        :active="request()->routeIs('home')">All
+    </x-dropdown-item>
     @foreach ($categories as $category)
         <x-dropdown-item
-            href="/?category={{ $category->slug }}&{{ http_build_query(request()->except('category')) }}"
-            class="{{ isset($currentCategory) && $currentCategory->is($category) ? 'bg-blue-500 text-white' : '' }}"
+            href="/?category={{ $category->slug }}&{{ http_build_query(request()->except('category','page')) }}"
             :active="isset($currentCategory) && $currentCategory->is($category)">
             {{ ucwords($category->name) }}
         </x-dropdown-item>

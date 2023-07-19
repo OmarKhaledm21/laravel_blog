@@ -12,7 +12,8 @@ class PostController extends Controller
     public function index()
     {
         return view('posts.index', [
-            'posts' => Post::latest()->filter(request(['search', 'category', 'author']))->get(),
+            'posts' => Post::latest()->filter(request(['search', 'category', 'author']))
+                ->paginate(6)->withQueryString()
         ]);
     }
 
@@ -22,16 +23,4 @@ class PostController extends Controller
             'post' => $post
         ]);
     }
-
-    // protected function getPosts()
-    // {
-    //         $posts = Post::latest('published_at');
-
-    //         $posts->when(request('search'), function ($query, $search) {
-    //             $query->where('title', 'like', '%' . $search . '%')
-    //                 ->orWhere('body', 'like', '%' . $search . '%');
-    //         });
-
-    //     return ;
-    // }
 }
